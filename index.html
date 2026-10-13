@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" type="image/x-icon" href="http://sanusb.blogspot.com.br/favicon.ico" />
+  <title>SanUSB Ferramentas computacionais</title>  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #0f4c81;
+      --secondary-color: #1e88e5;
+      --accent-color: #ff9800;
+      --text-dark: #2d3748;
+      --text-light: #f7fafc;
+      --bg-light: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      line-height: 1.6;
+      letter-spacing: 0.02em; /* Espaçamento agradável entre caracteres */
+      position: relative;
+    }
+
+    /* Navbar customizada */
+    .navbar {
+      background-color: rgba(15, 76, 129, 0.95) !important;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .nav-link {
+      font-weight: 500;
+      margin-right: 10px;
+      transition: color 0.2s ease;
+    }
+
+    /* Seções estilizadas */
+    section {
+      padding: 90px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 30px;
+      letter-spacing: -0.02em;
+    }
+
+    #section1 {
+      background: linear-gradient(135deg, #0f4c81 0%, #1e88e5 100%);
+      color: var(--text-light);
+    }
+    #section2 {
+      background-color: var(--bg-light);
+    }
+    #section3 {
+      background-color: #ffffff;
+    }
+    #section4 {
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      padding-bottom: 120px;
+    }
+
+    /* Cards e Imagens */
+    .img-container {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+    .img-container:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Formulários modernos */
+    .card-form {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+      padding: 40px;
+      border: none;
+    }
+    .form-group label {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .form-control {
+      border-radius: 8px;
+      border: 2px solid #e2e8f0;
+      padding: 12px 16px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+    }
+    .form-text {
+      font-size: 0.85rem;
+      color: #718096;
+      margin-top: 4px;
+    }
+
+    /* Botões personalizados */
+    .btn-custom {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 12px 30px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .btn-success-custom {
+      background-color: #2ed573;
+      border: none;
+      color: white;
+    }
+    .btn-success-custom:hover {
+      background-color: #26af5f;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(46, 213, 115, 0.3);
+    }
+
+    /* Links */
+    #section1 a { color: #ffeb3b; font-weight: 500; }
+    #section1 a:hover { text-decoration: underline; }
+    a { color: var(--secondary-color); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--primary-color); text-decoration: none; }
+
+    /* Controle de Idioma */
+    .lang-en { display: none; }
+    
+    /* Espaçamentos e utilitários */
+    h3 {
+      font-weight: 400;
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#mainNavbar" data-offset="100">
+    
+<script>
+document.onkeydown = function(e) {
+    if (e.ctrlKey && (e.keyCode === 85 )) {
+        return false;
+    }
+};
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    var max_fields = 9; 
+    var wrapper    = $(".wrapper"); 
+    var add_button = $(".add_fields"); 
+    var x = 1; 
+    
+    $(add_button).click(function(e){
+        e.preventDefault();
+        if(x < max_fields){ 
+            x++; 
+            $(wrapper).append('<div class="d-flex mt-2"><input class="form-control" type="text" name="input_array_name[]" placeholder="reference_content class" /> <a href="javascript:void(0);" class="btn btn-danger btn-sm ml-2 remove_field d-flex align-items-center">Remove</a></div>');
+        }
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ 
+        e.preventDefault();
+        $(this).parent('div').remove(); 
+        x--; 
+    });
+});
+
+function toggleLanguage() {
+    $(".lang-pt").toggle();
+    $(".lang-en").toggle();
+    
+    var btn = $("#translateBtn");
+    if (btn.text() === "English") {
+        btn.text("Português");
+    } else {
+        btn.text("English");
+    }
+}
+</script>
+
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://sanusb.org/">SanUSB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="#section1"><span class="lang-pt">Problema</span><span class="lang-en">Problem</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#section2"><span class="lang-pt">Solução</span><span class="lang-en">Solution</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#section3"><span class="lang-pt">Como?</span><span class="lang-en">How?</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#section4"><span class="lang-pt">Criar Projeto</span><span class="lang-en">Create Project</span></a></li>
+      </ul>
+      <button id="translateBtn" class="btn btn-outline-light my-2 my-sm-0" onclick="toggleLanguage()">English</button>
+    </div>
+  </div>
+</nav>
+
+<section id="section1">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 mb-4 mb-lg-0">
+        <h1 class="section-title h2">Itreal: Immersive technologies for augmented and virtual reality <br><small class="text-warning" style="font-size: 1.2rem; font-weight: 400;"><i>(Dynamic Repository and IoT AR tool)</i></small></h1> 
+        <h3 class="text-justify font-weight-light">
+          <span class="lang-pt">A realidade aumentada é uma tecnologia que possibilita a sobreposição e a interação de animações e imagens 3D no mundo real através de dispositivos computacionais como smartphones. O ambiente Itreal (<i>Immersive Technologies for Augmented and Virtual Reality</i>) é uma ferramenta IoT educacional simples e gratuita de introdução à realidade aumentada livre para crianças, jovens e adultos sem a necessidade de saber programação, utilizando navegadores Web convencionais como Google Chrome ou Mozilla Firefox e sem a necessidade de instalar aplicativos. É possível acessar palestras na íntegra sobre teoria e aplicação prática interdisciplinar de realidade aumentada clicando nos links <a href='https://youtu.be/Xf04qNoc3Sw' target='_blank'>https://youtu.be/Xf04qNoc3Sw</a> e <a href='https://youtu.be/wyWV5FyVx8A' target='_blank'>https://youtu.be/wyWV5FyVx8A</a>. Para modificar a dimensão ou escala inicial da imagem 3D projetada em realidade aumentada, basta seguir as intruções em <a href='https://youtu.be/eZpQBgZcXTM' target='_blank'>https://youtu.be/eZpQBgZcXTM</a>. O grupo de pesquisa <a href='https://www.instagram.com/grepet_publicacoes/' target='_blank'>@grepet_publicacoes</a> disponibliza o uso livre e gratuito dessa ferramenta.</span>
+          
+          <span class="lang-en">Augmented reality is a technology that enables the overlay and interaction of animations and 3D images in the real world through computing devices such as smartphones. The Itreal environment (<i>Immersive Technologies for Augmented and Virtual Reality</i>) is a simple and free educational IoT tool for introducing open augmented reality to children, youth, and adults without the need for programming knowledge, using conventional Web browsers like Google Chrome or Mozilla Firefox and without the need to install apps. You can access full lectures on theory and interdisciplinary practical application of augmented reality by clicking the links <a href='https://youtu.be/Xf04qNoc3Sw' target='_blank'>https://youtu.be/Xf04qNoc3Sw</a> and <a href='https://youtu.be/wyWV5FyVx8A' target='_blank'>https://youtu.be/wyWV5FyVx8A</a>. To modify the initial dimension or scale of the 3D image projected in augmented reality, just follow the instructions at <a href='https://youtu.be/eZpQBgZcXTM' target='_blank'>https://youtu.be/eZpQBgZcXTM</a>. The research group <a href='https://www.instagram.com/grepet_publicacoes/' target='_blank'>@grepet_publicacoes</a> makes the free use of this tool available.</span>
+        </h3>
+      </div>
+      <div class="col-lg-5 text-center">
+        <div class="img-container d-inline-block">
+          <img class="img-fluid rounded" src="https://app.sanusb.org/itreal1/itreal.png" alt="SanUSB" style="max-height: 350px;"> 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="section2">
+  <div class="container">
+    <div class="row align-items-center flex-column-reverse flex-lg-row">
+      <div class="col-lg-4 text-center mb-4 mb-lg-0">
+        <div class="img-container d-inline-block bg-white p-3">
+          <img class="img-fluid" src="https://app.sanusb.org/itreal/sanusbblogspotQRCODE.png" alt="SanUSB QR" style="max-width: 200px;">
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <h2 class="section-title text-dark"><span class="lang-pt">A Solução Dinâmica</span><span class="lang-en">The Dynamic Solution</span></h2>
+        <h3 class="text-justify text-muted">
+          <span class="lang-pt">Para manipular de forma dinâmica uma imagem 3D de realidade aumentada com os dedos pela tela do smartphone, basta adicionar abaixo um endereço URL ou fazer o <i>upload</i> um de uma imagem .glb (<i>Graphics Library Binary</i>) que pode ser gerada por programas gráficos como <a href='https://tinkercad.com/things' target='_blank'>Tinkercad</a>, ou encontradas livremente em diversos repositórios na nuvem como <a href='https://sketchfab.com/' target='_blank'>Sketchfab</a>, entre outros sites e repositórios como o <a href='https://app.sanusb.org/itreal/src/dynamicrepo/' target='_blank'>dynamicrepo</a> do Itreal que, como mostrado no vídeo tutorial em <a href='https://youtu.be/9_4CvpmVG1I' target='_blank'>Tutorial 1</a> e em <a href='https://youtu.be/Ayc86CqNeOE' target='_blank'>Tutorial 2</a>, possibilita tanto utilizar o endereço URL já existente como também baixar o arquivo .glb e fazer o <i>upload</i> no novo perfil para criar aplicações de realidade aumentada com smartphones.</span>
+
+          <span class="lang-en">To dynamically manipulate a 3D augmented reality image with your fingers on the smartphone screen, simply add a URL address below or <i>upload</i> a .glb (<i>Graphics Library Binary</i>) image that can be generated by graphic programs such as <a href='https://tinkercad.com/things' target='_blank'>Tinkercad</a>, or freely found in various cloud repositories like <a href='https://sketchfab.com/' target='_blank'>Sketchfab</a>, among other sites and repositories such as Itreal's <a href='https://app.sanusb.org/itreal1/src/dynamicrepo/' target='_blank'>dynamicrepo</a> which, as shown in the tutorial video at <a href='https://youtu.be/9_4CvpmVG1I' target='_blank'>Tutorial 1</a> and at <a href='https://youtu.be/Ayc86CqNeOE' target='_blank'>Tutorial 2</a>, allows both using an existing URL address and downloading the .glb file to <i>upload</i> to the new profile to create augmented reality applications with smartphones.</span>
+        </h3> 
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="section3">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h2 class="section-title"><span class="lang-pt">Como Funciona?</span><span class="lang-en">How it works?</span></h2>
+        <h3 class="text-justify text-secondary mb-4">
+          <span class="lang-pt">O arquivo glb é gerado pela compilação em um arquivo único da pasta de arquivos gltf (<i>Graphics Library Transmission Format</i>) e suas bibliotecas de textura. O gltf é um formato de arquivo para imagens e modelos 3D de realidade aumentada em navegadores WEB. Para compilar rapidamente gltf em glb basta acessar o <a href='https://app.sanusb.org/itreal/srcmodels/makeglb' target='_blank'>makeglb</a> e seguir as instruções em <a href='https://youtu.be/0sqVYQWyf0o' target='_blank'>Vídeo explicativo</a>.</span>
+          <span class="lang-en">The glb file is generated by compiling the gltf (<i>Graphics Library Transmission Format</i>) file folder and its texture libraries into a single file. Gltf is a file format for images and 3D models of augmented reality in WEB browsers. To quickly compile gltf into glb just access <a href='https://app.sanusb.org/itreal/srcmodels/makeglb' target='_blank'>makeglb</a> and follow the instructions at <a href='https://youtu.be/0sqVYQWyf0o' target='_blank'>Explanation Video</a>.</span>
+        </h3>
+        
+        <div class="alert alert-warning border-0 shadow-sm p-4 rounded-lg" style="background-color: #fffaf0; border-left: 4px solid var(--accent-color) !important;">
+          <h3 class="text-justify m-0" style="font-size: 1rem;">
+            <span class="lang-pt"><strong>Dica de Uso:</strong> Após a leitura do <i>Qrcode</i> pela câmera do smartphone, caso a tela do navegador fique em branco por mais de cinco segundos, feche o navegador e tente realizar a leitura novamente. Caso o Zoom da câmera esteja habilitado, acesse as configurações de Acessibilidade do navegador e desabilite o item "Forçar o Zoom". Com essa tecnologia é possível desenvolver laboratórios, livros e <i>e-books</i> lúdicos e interativos. Para transformar uma imagem png simples em 3D veja <a href='https://youtu.be/xyRDkE7WJh0' target='_blank'>este vídeo</a>.</span>
+            <span class="lang-en"><strong>Usage Tip:</strong> After reading the <i>Qrcode</i> by the smartphone camera, if the browser screen remains white for more than five seconds, close the browser and try scanning again. If camera Zoom is enabled, access browser Accessibility settings and disable "Force Zoom". With this technology, it is possible to develop labs, books, and playful <i>e-books</i>. To transform a simple png into 3D, see <a href='https://youtu.be/xyRDkE7WJh0' target='_blank'>this video</a>.</span>
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-4 text-center mt-4 mt-lg-0">
+        <div class="img-container d-inline-block">
+          <img class="img-fluid" src="https://app.sanusb.org/itreal/s.png" alt="SanUSB Info" style="max-width: 180px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="section4">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-10">
+        
+        <div class="card card-form">
+          <h2 class="text-center font-weight-bold mb-5" style="color: var(--primary-color);">
+            <span class="lang-pt">Criar Perfil Itreal</span>
+            <span class="lang-en">Create Itreal Profile</span>
+          </h2>
+          
+          <form action="https://app.sanusb.org/itreal1/upload.php" method="post" enctype="multipart/form-data">
+            
+            <div class="form-group mb-4">
+              <label for="ex3">
+                <span class="lang-pt">Insira um nome para seu Perfil_Imagem:</span>
+                <span class="lang-en">Insert a name for your Profile_Image:</span>
+              </label>
+              <input class="form-control" id="ex3" type="text" name="perfil" placeholder="Ex: sandrojuca_microcontrolador" required />
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="ex">
+                <span class="lang-pt">Dimensão ou Escala (Scale) da Projeção 3D:</span>
+                <span class="lang-en">Initial Dimension or Scale of 3D Projection:</span>
+              </label>
+              <input class="form-control" id="ex" type="text" name="arsize" value="1.5" required />
+              <small class="form-text">
+                <span class="lang-pt">Escala padrão: 1.5 (Faixa aceitável entre 0.01 e 99.99)</span>
+                <span class="lang-en">Preset scale: 1.5 (Range between 0.01 and 99.99)</span>
+              </small>
+            </div>
+            
+            <div class="form-group mb-4">
+              <label for="tmurl">
+                <span class="lang-pt">Insira o endereço URL da imagem .glb:</span>
+                <span class="lang-en">Insert a glb image URL address:</span>
+              </label>
+              <input class="form-control" id="tmurl" type="url" name="tmurl" placeholder="https://app.sanusb.org/itreal/srcmodels/bowser.glb" />
+            </div>
+            
+            <div class="text-center my-4">
+              <span class="badge badge-secondary p-2 text-uppercase font-weight-bold">ou / or</span>
+            </div>
+
+            <div class="form-group mb-5 p-3 rounded" style="background-color: var(--bg-light); border: 2px dashed #cbd5e1;">
+              <label for="arquivo" class="d-block mb-2">
+                <span class="lang-pt">Adicione um arquivo (.glb) local para upload:</span>
+                <span class="lang-en">or add a new local file (.glb) to upload:</span>
+              </label>
+              <input type="file" name="arquivo" id="arquivo" class="form-control-file" />
+            </div>
+            
+            <button type="submit" class="btn btn-block btn-custom btn-success-custom text-uppercase">
+              <span class="lang-pt">Enviar para o Itreal</span>
+              <span class="lang-en">Submit Itreal</span>
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
